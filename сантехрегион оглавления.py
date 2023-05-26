@@ -15,10 +15,10 @@ def resp(url):
             for link in links:
                 href = link.get('href')
                 if href:
-                    f.write('http://santeh-region.com' +href + '\n')
+                    f.write('http://ORG.com' +href + '\n')
 
 
-    with open('сантехрегион sublinks.txt', 'w') as f:
+    with open('ORG sublinks.txt', 'w') as f:
         with open('links.txt', 'r') as f_links:
             for line in f_links:
                 link = line.strip()
@@ -32,11 +32,11 @@ def resp(url):
                     for href in hrefs:
                         link = href.get('href')
                         if link:
-                            f.write('http://santeh-region.com' + link + '\n')
+                            f.write('http://ORG.com' + link + '\n')
                             print('+'*10)
 
-    with open('сантехрегион ID_product.txt', 'w') as id:
-        with open('сантехрегион sublinks.txt', 'r') as f:
+    with open('ORG ID_product.txt', 'w') as id:
+        with open('ORG sublinks.txt', 'r') as f:
             for line in f:
                 url = line.strip()
                 s = requests.Session()
@@ -55,7 +55,7 @@ def resp(url):
 
 def main():
 
-    resp(url = 'http://santeh-region.com/')
+    resp(url = 'http://ORG.com/')
 
 if __name__ == '__main__':
     main()
