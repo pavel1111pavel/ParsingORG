@@ -13,20 +13,20 @@ def find_row(sheet, product_title, product_id):
             return row
     return None
 
-wb = openpyxl.load_workbook(filename='САНТЕХРЕГИОН Прайс.xlsx')
+wb = openpyxl.load_workbook(filename='ORG Прайс.xlsx')
 sheet = wb.active
 header = ['Title', 'ID']
 if f"Price({today})" not in [cell.value for cell in sheet[1]]:
     sheet.cell(row=1, column=sheet.max_column + 1).value = f"Price({today})"
     header.append(f"Price({today})")
 
-with open('сантехрегион ID_product.txt', 'r') as f:
+with open('ORG ID_product.txt', 'r') as f:
     data = f.read().splitlines()
     for i in range(0, len(data), 10):
 
         list_id = ','.join(data[i:i+10])
         s = requests.Session()
-        url = f'http://santeh-region.com/compare/{list_id}/'
+        url = f'http://ORG.com/compare/{list_id}/'
         print(url)
         response = s.get(url=url)
         time.sleep(5)
@@ -53,5 +53,5 @@ with open('сантехрегион ID_product.txt', 'r') as f:
 
                 time.sleep(1)
 
-wb.save("САНТЕХРЕГИОН Прайс.xlsx")
+wb.save("ORG Прайс.xlsx")
 
